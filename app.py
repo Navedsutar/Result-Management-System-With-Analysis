@@ -1,19 +1,48 @@
+# --------------------------new code for altas----------------------
+
+
+
+
+
+
+# ------------------old code --------------------------------------
 from flask import Flask, render_template, request, redirect, url_for
 from pymongo import MongoClient
 import pandas as pd
 import os
 
-
 app = Flask(__name__)
 
-#---------------Database connection-------------------
-client = MongoClient('mongodb://localhost:27017') #Add your mongodb connection string, If created
-db = client['Project'] #Database Name
-users_collection = db['users']  #Collection Where Users are saved
-collection = db['student_list'] #Collection where data of student are saved
-settings_collection = db['setting'] # Collection where data of settings are saved
-marks = db['marks'] # Collection where marks of students are saved
-excluded_columns = ['_id','year','semester','subject'] 
+# ---------------Database connection-------------------
+# client = MongoClient('mongodb://localhost:27017') #Add your mongodb connection string, If created
+# db = client['Project'] #Database Name
+# users_collection = db['users']  #Collection Where Users are saved
+# collection = db['student_list'] #Collection where data of student are saved
+# settings_collection = db['setting'] # Collection where data of settings are saved
+# marks = db['marks'] # Collection where marks of students are saved
+# excluded_columns = ['_id','year','semester','subject'] 
+
+
+
+from pymongo import MongoClient
+
+# MongoDB Atlas connection string
+client = MongoClient('mongodb+srv://naved13:<Naved1311>@result-analysis.cxri7.mongodb.net/?retryWrites=true&w=majority&appName=Result-Analysis')
+
+# Database Name
+db = client['Result_analysis']
+
+# Collections
+users_collection = db['users']  # Collection where Users are saved
+collection = db['student_list']  # Collection where data of students are saved
+settings_collection = db['setting']  # Collection where data of settings are saved
+marks = db['marks']  # Collection where marks of students are saved
+
+# Excluded columns
+excluded_columns = ['_id', 'year', 'semester', 'subject']
+
+
+
 
 class User:
     def __init__(self, username, password):     
@@ -29,7 +58,7 @@ def login():
         username = request.form['username']
         password = request.form['password']
 
-        user = users_collection.find_one({'username': username, 'password': password})
+        # user = users_collection.find_one({'username': username, 'password': password})
 
         if ((username=="admin" and password=="221455")):
             return redirect('/homepage') 

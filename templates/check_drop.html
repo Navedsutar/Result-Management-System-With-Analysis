@@ -1,0 +1,70 @@
+{% extends 'homepage.html' %} 
+{% block title %}Check Drop{% endblock %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='check_drop.css') }}">
+<h1>Drop Checker</h1>
+<form action="/check_drop" method="post">
+
+    <label for="current_year">Select current Year:</label>
+    <select id="current_year" name="current_year" placeholder="Select year" onchange="update_years()" crequired>
+        <option value="select">-- Select Year --</option>
+        <option value="First">First Year</option>
+        <option value="Second">Second Year</option>
+        <option value="Third">Third Year</option>
+        <option value="Fourth">Fourth Year</option>
+    </select><br><br>
+
+    <label for="past_year">Select Past Year you have KT:</label>
+    <select id="past_year" name="past_year" placeholder="Select year" required>
+        <option value="">-- Select Year --</option>
+    </select><br><br>
+    
+    <label for="external_kt">How many KT in External:</label>
+    <input type="number" id="external_kt" name="external_kt" placeholder="Enter number" required><br><br>
+    
+    <label for="ise">How many KT in Internal/Term Work/Oral/Practical:</label>
+    <input type="number" id="ise" name="ise" placeholder="Enter number" required><br><br>
+    
+    <input type="submit" value="Check Drop"> 
+    </form>
+    <div id="message-block">
+    {% if message %}
+    <br>
+    <h3 align="center"><p>{{ message }}</p></h3>
+    {% endif %}
+    </div>
+    <script>
+        function update_years() {
+            var current_yearSelect= document.getElementById("current_year");
+            var past_yearSelect = document.getElementById("past_year");
+
+            past_yearSelect.innerHTML = "<option value=''>-- Select Year --</option>";
+
+            if (current_yearSelect.value === "First") {
+                past_yearSelect.innerHTML += "<option value='first'>First Year</option>";
+            } else if (current_yearSelect.value === "Second") {
+                past_yearSelect.innerHTML += "<option value='first'>First Year</option>";
+                past_yearSelect.innerHTML += "<option value='second'>Second Year</option>";
+            } else if (current_yearSelect.value === "Third") {
+                past_yearSelect.innerHTML += "<option value='first'>First Year</option>";
+                past_yearSelect.innerHTML += "<option value='second'>Second Year</option>";
+                past_yearSelect.innerHTML += "<option value='Third'>Third Year</option>";
+            }
+            else{
+                past_yearSelect.innerHTML += "<option value='second'>Second Year</option>";
+                past_yearSelect.innerHTML += "<option value='Third'>Third Year</option>";
+                past_yearSelect.innerHTML += "<option value='fourth'>Fourth Year</option>";
+            }
+        }
+    </script>
+    <script>
+        setTimeout(function() {
+            var messageBlock = document.getElementById('message-block');
+            if (messageBlock) {
+                messageBlock.style.display = 'none';
+            }
+        }, 3000); 
+    </script>
+{% endblock  %}
+
+      

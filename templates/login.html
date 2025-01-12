@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}"> 
+</head>
+<body>
+    <div class="login-container">
+        <h2 align="center">Login</h2>
+        <form action="/" method="post">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" placeholder="Enter username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter password" required>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+        <div id="message-block">
+    {% if message %}
+    <p>{{ message }}</p>
+    {% endif %}
+        </div>
+    </div>
+    <script>
+        setTimeout(function() {
+            var messageBlock = document.getElementById('message-block');
+            if (messageBlock) {
+                messageBlock.style.display = 'none';
+            }
+        }, 1000); 
+    </script>
+</body>
+</html>

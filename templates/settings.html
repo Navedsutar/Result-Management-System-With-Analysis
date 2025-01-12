@@ -1,0 +1,42 @@
+{% extends 'homepage.html' %} 
+{% block title %}Data Display{% endblock %} 
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='settings.css') }}">
+{% block content %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<div class="container">
+    <h1>Settings</h1>
+    <form action="/submit_settings" method="post" enctype="multipart/form-data">
+        <label for="year">Enter year:</label><br>
+        <input type="text" id="year" name="year" required><br><br>
+
+        <label for="semester">Enter semester:</label><br>
+        <input type="text" id="semester" name="semester" required><br><br>
+
+        <label for="subject">Enter subject:</label><br>
+        <input type="text" id="subject" name="subject" required ><br><br>  
+
+        <input type="checkbox" id="ese" name="ese" value="ESE">
+        <label for="ese"> ESE</label><br>
+        <input type="checkbox" id="iae" name="iae" value="IAE">
+        <label for="iae"> IAE</label><br>
+        <input type="checkbox" id="tw" name="tw" value="TW">
+        <label for="tw"> TW</label><br>
+        <input type="checkbox" id="pr" name="pr" value="PR">
+        <label for="pr"> PR</label><br>
+            <input type="file" name="file">
+            <br>
+            <br>
+        <div id="message-block">
+        {% if message %}
+        <br>
+        <h3><p>{{ message }}</p></h3>
+        {% endif %}
+        </div>
+        <input type="submit" value="Submit">
+    </form>
+        
+    <!-- Form for uploading Excel file -->
+    
+</div>
+{% endblock  %}
+      

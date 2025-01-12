@@ -1,0 +1,35 @@
+{% extends 'homepage.html' %} 
+{% block title %}Result Analysis{% endblock %} 
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='result_analysis.css') }}">
+{% block content %}
+<h1>Result Analyzer</h1>
+    <form action="/result" method="POST">
+        <label for="year">Select Year:</label>
+        <select name="year" id="year">
+            <option value="select">-- Select Year --</option>
+            {% for year in years %} 
+            <option value="{{ year }}">{{ year }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <label for="semester">Select Semester:</label>
+        <select name="semester" id="semester">
+            <option value="select">-- Select Semester --</option>
+            {% for semester in semesters %}
+            <option value="{{ semester }}">{{ semester }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <label for="subject">Select Subject:</label>
+        <select name="subject" id="subject">
+            <option value="select">-- Select Subject --</option>
+            {% for subject in subjects %}
+            <option value="{{ subject }}">{{ subject }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+{% endblock  %}
+      

@@ -1,0 +1,27 @@
+{% extends 'homepage.html' %} 
+{% block title %}Upload{% endblock %}
+{% block content %}
+<h1 align="center">Upload Student List File</h1>
+<br>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <br>
+        <br>
+        <input type="submit" value="Upload">
+    </form>
+    <div id="message-block">
+    {% if message %}
+    <br>
+    <h3 align="center"><p>{{ message }}</p></h3>
+    {% endif %}
+    </div>
+    <script>
+        setTimeout(function() {
+            var messageBlock = document.getElementById('message-block');
+            if (messageBlock) {
+                messageBlock.style.display = 'none';
+            }
+        }, 1000); 
+    </script>
+{% endblock  %}
+      

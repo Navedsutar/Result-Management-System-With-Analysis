@@ -1,0 +1,35 @@
+{% extends 'homepage.html' %} 
+{% block title %}Data Display{% endblock %} 
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='student_list.css') }}">
+{% block content %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<h1 align="center">Upload Subject Marks</h1>
+<br>
+<form>
+    <div class="form-group">
+        <label for="subject">Enter the subject:</label>
+        <input type="text" id="subject" name="subject" required>
+    </div>
+</form>
+    <form action="/upload_marks" method="post" enctype="multipart/form-data">
+        <input type="file" name="subject_file">
+        <br>
+        <br>
+        <input type="submit" value="Upload">
+    </form>
+    <div id="message-block">
+        {% if message %}
+        <br>
+        <h3><p>{{ message }}</p></h3>
+        {% endif %}
+        </div>
+        <script>
+            setTimeout(function() {
+                var messageBlock = document.getElementById('message-block');
+                if (messageBlock) {
+                    messageBlock.style.display = 'none';
+                }
+            }, 2000); 
+        </script>
+{% endblock  %}
+      

@@ -1,0 +1,40 @@
+{% extends 'homepage.html' %} 
+{% block title %}Data Display{% endblock %} 
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='student_list.css') }}">
+{% block content %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<h1 align="center">Student List</h1>
+<br>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>SR.No</th>
+                <th></th>
+                <th>Roll no.</th>
+                <th></th>
+                <th>Student Name</th>
+                <th></th>
+                <th>Year</th>
+                <th></th>
+                <th>Gender</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in student_list %}
+            <tr class="{{ 'male' if item["Gender"]=='Male' else 'female' }}">
+              <td>{{ loop.index }}</td>
+              <td></td>
+              <td>{{ item["Roll no."] }}</td>
+              <td></td>
+              <td>{{ item["Student Name"] }}</td>
+              <td></td>
+              <td>{{ item["Year"] }}</td>
+              <td></td>
+              <td>{{ item["Gender"] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock  %}
+      

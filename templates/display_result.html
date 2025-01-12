@@ -1,0 +1,47 @@
+{% extends 'homepage.html' %} 
+{% block title %}Result Analysis{% endblock %} 
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='student_list.css') }}">
+{% block content %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<h1 align="center">Result Analysis</h1>
+    <table class="table">
+        <tr>
+            <th>Category</th>
+            <th>Number of Students</th>
+        </tr>
+        <tr>
+            <td>Marks > 80%</td>
+            <td>{{ marks_above_80 }}</td>
+        </tr>
+        <tr>
+            <td>Marks 70-80%</td>
+            <td>{{ marks_70_to_80 }}</td>
+        </tr>
+        <tr>
+            <td>Marks 60-70%</td>
+            <td>{{ marks_60_to_70 }}</td>
+        </tr>
+        <tr>
+            <td>Marks 50-60%</td>
+            <td>{{ marks_50_to_60 }}</td>
+        </tr>
+        <tr>
+            <td>Marks 40-50%</td>
+            <td>{{ marks_40_to_50 }}</td>
+        </tr>
+        <tr>
+            <td>Marks < 40%</td>
+            <td>{{ marks_below_40 }}</td>
+        </tr>
+        <tr>
+            <td>Number of students Passed</td>
+            <td>{{ pass_marks }}</td>
+        </tr>
+        <tr>
+            <td>Number of students Failed</td>
+            <td>{{ fail_marks }}</td>
+        </tr>
+    </table>
+{% endblock  %}
+      

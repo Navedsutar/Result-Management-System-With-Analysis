@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{% block title %}Homepage{% endblock %}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+	<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="sidebar">
+        <h2>DashBoard</h2>
+        <ul>    
+            <li><a href="/homepage">Home</a></li>
+            <li><a href="/student_list">Student List</a></li>
+            <li><a href="/UPLOAD">Upload Student List</a></li>
+            <li><a href="/result_sheet">Result Sheet</a></li>
+            <li><a href="/result_analysis">Result Analysis</a></li>
+            <li><a href="/SETTINGS">Settings</a></li>
+            <li><a href="/CHECK_DROP">Check Drop</a></li>
+            <li><a href="/">Logout</a></li>
+        </ul> 
+    </div>
+    <div class="main_content">
+        <div class="info">
+        {% block content %}
+        <div class="header" align="center">
+           <h3> Welcome to Result Management System With Analysis</h3>
+        </div>
+        <h1 align="center">Homepage!!</h1>
+        <br>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Total number of students:</th>
+                    <td>{{ total_students }}</td>
+                </tr>
+                <tr>
+                    <th>Number of male students</th>
+                    <td>{{ male_students}}</td>
+                </tr>
+                <tr>
+                    <th>Number of female students:</th>
+                    <td>{{ female_students }}</td>
+                </tr>
+                <tr>
+                    <th>Number of First year students: </th>
+                    <td>{{ first_year_students }}</td>
+                </tr>
+                <tr>
+                    <th>Number of Second year students: </th>
+                    <td>{{ second_year_students}}</td>
+                </tr>
+                <tr>
+                    <th>Number of Third year students: </th>
+                    <td>{{ third_year_students }}</td>
+                </tr>
+                <tr>
+                    <th>Number of Fourth year students: </th>
+                    <td>{{ fourth_year_students }}</td> 
+                </tr>
+            </thead>
+        </table>
+        {% endblock  %}
+        </div>
+    </div>
+</div>
+</body>
+</html>
